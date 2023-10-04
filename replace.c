@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------*/
 /* replace.c                                                          */
-/* Author: ???                                                        */
+/* Author: Milan Sastry                                                        */
 /*--------------------------------------------------------------------*/
 
 #include "str.h"
@@ -20,7 +20,29 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   /* Insert your code here. */
+   size_t count = 0;
+   char *line = pcLine;
+   assert(pcline != null && pcFrom != null && pcTo != null);
+   if (*pcFrom == '\0') {
+      printf(pcLine);
+      return 0;
+   }
+
+
+   
+   while (Str_search(line,pcFrom) != NULL){
+      char *found = Str_search(line,pcFrom);
+      pi* = '\0'
+      pi += Str_length(pcFrom);
+      char *firstHalf = Str_concat(line,pcTo);
+      line = Str_concat(firstHalf,pi);
+      count++;
+   }
+   return count;
+
+
+
+
 }
 
 /*--------------------------------------------------------------------*/
