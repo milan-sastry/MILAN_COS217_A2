@@ -3,7 +3,7 @@
 /* Author: Bob Dondero                                                */
 /*--------------------------------------------------------------------*/
 
-#include "stra.h"
+#include "str.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
