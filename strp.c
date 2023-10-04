@@ -15,8 +15,9 @@ size_t Str_getLength(const char *pcSrc)
 }
 
 char *Str_copy(char *pcDest, const char *pcSrc){
-    const char *pi = *pcDest;
+    char *pi = pcDest;
     assert(pcSrc != NULL);
+    assert(pcDest != NULL);
     while(*pcSrc != '\0'){
         *pcDest = *pcSrc;
         pcDest++;
@@ -27,17 +28,19 @@ char *Str_copy(char *pcDest, const char *pcSrc){
 }
 
 char *Str_concat(char *pcDest, const char *pcSrc){
-    const char *pi = *pcDest;
+    char *pi = pcDest;
     assert(pcSrc != NULL);
+    assert(pcDest != NULL);
     while(*pcDest != '\0'){
         pcDest++;
     }
     while(*pcSrc != '\0'){
-        pcDest = *pcSrc;
+        *pcDest = *pcSrc;
         pcSrc++;
         pcDest++;
     }
-    return pcDest;
+    *pcDest = '\0';
+    return pi;
 }
 
 int Str_compare(const char *str1, const char *str2){
@@ -45,32 +48,30 @@ int Str_compare(const char *str1, const char *str2){
     assert(str2 != NULL);
 
     while (*str1 != '\0' && *str2 != '\0'){
-        if (*str1 != *str2) return (int)(*str1 - *str2){
-            str1++;
-            str2++;
-        }
+        if (*str1 != *str2) return (int)(*str1 - *str2);
+        str1++;
+        str2++;
     }
     return (int)(*str1 - *str2);
 }
 
 
 char *Str_search(const char *str1, const char *str2){
-    const char *pi;
+    
     assert(str1 != NULL);
     assert(str2 != NULL);
    
-    if (*str2 == '\0') return str2;
+    if (*str2 == '\0') return (char*)str1;
     while(*str1 != '\0'){
-        if (*str1 == *str2){
-            pi = *str1;
-            while(*str2 != '\0'){
-                if (*str1 != *str2) break;
-                pi++;
-            }
-            if (*pi == '\0') return str1;
+        const char *pi1 = str1;
+        const char *pi2 = str2;
+        while(*pi1 == *pi2 && *pi2 != '\0'){
+            pi1++;
+            pi2++;
         }
+        if (*pi2 == '\0') return (char*)str1;
+
         str1++;
-        str2++;
     }
     return NULL;
 }
