@@ -28,24 +28,16 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
 
-
-   
    while (Str_search(line,pcFrom) != NULL){
-
       char *pi = Str_search(line,pcFrom);
-      fwrite(line, 1, pi - line, stdout);
+      fwrite(line, 1, (size_t)(pi - line), stdout);
       printf(pcTo);
       line = pi + Str_getLength(pcFrom);
       count++;
    }
 
    printf(line);
-
    return count;
-
-
-
-
 }
 
 /*--------------------------------------------------------------------*/
@@ -91,5 +83,3 @@ int main(int argc, char *argv[])
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }
-
-
