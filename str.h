@@ -14,7 +14,7 @@ size_t Str_getLength(const char pcSrc[]);
 /*Copies the the char array pcSrc into pcDest and returns it*/
 char *Str_copy(char pcDest[], const char pcSrc[]);
 
-/*Concatenates pcSrc to the end of pcDest and returns new string*/
+/*Concatenates pcSrc to the end of pcDest and returns the new string*/
 char *Str_concat(char pcDest[], const char pcSrc[]);
 
 /*Compares str1 and str2 by character, returns 0 if equal*/
