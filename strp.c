@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-/* Returns the length of pcSrc*/
 size_t Str_getLength(const char *pcSrc)
 {
    const char *pcEnd;
@@ -19,9 +18,8 @@ size_t Str_getLength(const char *pcSrc)
    return (size_t)(pcEnd - pcSrc);
 }
 
-/*Copies the the char array pcSrc into pcDest and returns it*/
 char *Str_copy(char *pcDest, const char *pcSrc){
-    char *pi = pcDest;
+    char *pc = pcDest;
     assert(pcSrc != NULL);
     assert(pcDest != NULL);
     while(*pcSrc != '\0'){
@@ -30,12 +28,11 @@ char *Str_copy(char *pcDest, const char *pcSrc){
         pcSrc++;
     }
     *pcDest = '\0';
-    return pi;
+    return pc;
 }
 
-/*Concatenates pcSrc to the end of pcDest and returns new string*/
 char *Str_concat(char *pcDest, const char *pcSrc){
-    char *pi = pcDest;
+    char *pc = pcDest;
     assert(pcSrc != NULL);
     assert(pcDest != NULL);
     while(*pcDest != '\0'){
@@ -47,10 +44,9 @@ char *Str_concat(char *pcDest, const char *pcSrc){
         pcDest++;
     }
     *pcDest = '\0';
-    return pi;
+    return pc;
 }
 
-/*Compares str1 and str2 by character, returns 0 if equal*/
 int Str_compare(const char *str1, const char *str2){
     assert(str1 != NULL);
     assert(str2 != NULL);
@@ -62,20 +58,19 @@ int Str_compare(const char *str1, const char *str2){
     return (int)(*str1 - *str2);
 }
 
-/*Returns first occurance of needle in haystack, NULL if not found*/
-char *Str_search(const char *str1, const char *str2){
-    assert(str1 != NULL);
-    assert(str2 != NULL);
-    if (*str2 == '\0') return (char*)str1;
-    while(*str1 != '\0'){
-        const char *pi1 = str1;
-        const char *pi2 = str2;
-        while(*pi1 == *pi2 && *pi2 != '\0'){
-            pi1++;
-            pi2++;
+char *Str_search(const char *haystack, const char *needle){
+    assert(haystack != NULL);
+    assert(needle != NULL);
+    if (*needle == '\0') return (char*)haystack;
+    while(*haystack != '\0'){
+        const char *pc1 = haystack;
+        const char *pc2 = needle;
+        while(*pc1 == *pc2 && *pc2 != '\0'){
+            pc1++;
+            pc2++;
         }
-        if (*pi2 == '\0') return (char*)str1;
-        str1++;
+        if (*pc2 == '\0') return (char*)haystack;
+        haystack++;
     }
     return NULL;
 }

@@ -28,9 +28,10 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
 
+   /*replaces all occurances of pcFrom with pcTo in pcLine, writes to stdout*/
    while (Str_search(line,pcFrom) != NULL){
       char *pi = Str_search(line,pcFrom);
-      fwrite(line, 1, (size_t)(pi - line), stdout);
+      (void)fwrite(line, 1, (size_t)(pi - line), stdout);
       printf(pcTo);
       line = pi + Str_getLength(pcFrom);
       count++;
@@ -53,6 +54,7 @@ static size_t replaceAndWrite(const char *pcLine,
    Assume that no line of stdin consists of more than MAX_LINE_SIZE-1
    characters. */
 
+
 int main(int argc, char *argv[])
 {
    enum {MAX_LINE_SIZE = 4096};
@@ -72,6 +74,7 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
+   /*Reads from stdin and writes to stdout*/
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
       if (*pcFrom == '\0'){
          printf(acLine);

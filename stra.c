@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-/* Returns the length of pcSrc*/
 size_t Str_getLength(const char pcSrc[])
 {
    size_t uLength = 0;
@@ -18,7 +17,6 @@ size_t Str_getLength(const char pcSrc[])
    return uLength;
 }
 
-/*Copies the the char array pcSrc into pcDest and returns it*/
 char *Str_copy(char pcDest[], const char pcSrc[]){
     size_t i = 0;
     assert(pcSrc != NULL);
@@ -31,7 +29,6 @@ char *Str_copy(char pcDest[], const char pcSrc[]){
     return pcDest;
 }
 
-/*Concatenates pcSrc to the end of pcDest and returns new string*/
 char *Str_concat(char pcDest[], const char pcSrc[]){
     size_t i = 0;
     size_t j = 0;
@@ -47,7 +44,6 @@ char *Str_concat(char pcDest[], const char pcSrc[]){
     return pcDest;
 }
 
-/*Compares str1 and str2 by character, returns 0 if equal*/
 int Str_compare(const char str1[], const char str2[]){
     size_t i = 0;
     assert(str1 != NULL);
@@ -59,7 +55,6 @@ int Str_compare(const char str1[], const char str2[]){
     return (int)(str1[i] - str2[i]);
 } 
 
-/*Returns first occurance of needle in haystack, NULL if not found*/
 char *Str_search(const char haystack[], const char needle[]){
     size_t i = 0;
     size_t j = 0;
